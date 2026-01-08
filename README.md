@@ -33,12 +33,45 @@ Claude Code skill for FinLab quantitative trading package, specifically designed
 git clone https://github.com/koreal6803/finlab-claude-plugin.git
 cd finlab-claude-plugin
 ```
-
 3. In ChatGPT Codex CLI, simply say:
 ```
 請幫我安裝此finlab-plugin 裡的 skills
 ```
 (Please help me install the skills in this finlab-plugin)
+
+
+### Option 3: Install the MCP Plugin for Cursor
+
+1. Ensure [uv](https://astral.sh/uv/) is installed.
+2. Navigate to the `mcp-server` directory and install dependencies:
+   ```bash
+   cd mcp-server && uv sync
+   ```
+   
+3. Add and modify the following configuration in `~/.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    ...Other setting,
+    "finlab": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "<YOUR PATH>/finlab-claude-plugin/mcp-server",
+        "python",
+        "-m",
+        "finlab_mcp.server"
+      ],
+      "env": {
+        "FINLAB_API_TOKEN": "<FINLAB API KEY>"
+      }
+    }
+  }
+}
+
+```
+
 
 ## Prerequisites
 

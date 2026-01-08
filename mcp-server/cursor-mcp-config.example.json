@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "finlab": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "your_path/finlab-claude-plugin/mcp-server",
+        "python",
+        "-m",
+        "finlab_mcp.server"
+      ],
+      "env": {
+        "FINLAB_API_TOKEN": "your_token_here"
+      }
+    }
+  }
+}

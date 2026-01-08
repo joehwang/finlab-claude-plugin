@@ -1,0 +1,93 @@
+{
+  "description": "FinLab MCP Server 配置範例 (使用 uv)",
+  "examples": {
+    "cursor_with_uv": {
+      "file_location": ".cursor/mcp.json (專案根目錄)",
+      "config": {
+        "mcpServers": {
+          "finlab": {
+            "command": "uv",
+            "args": [
+              "run",
+              "--directory",
+              "/Users/yourusername/path/to/finlab-claude-plugin/mcp-server",
+              "python",
+              "-m",
+              "finlab_mcp.server"
+            ],
+            "env": {
+              "FINLAB_API_TOKEN": "your_token_here"
+            }
+          }
+        }
+      },
+      "notes": [
+        "使用 uv 執行（推薦）",
+        "將 --directory 路徑改成你的實際專案路徑",
+        "確保已執行 'uv sync' 安裝依賴",
+        "重新載入視窗後生效 (Cmd+Shift+P → Reload Window)"
+      ]
+    },
+    "claude_desktop_with_uv": {
+      "file_location": "~/Library/Application Support/Claude/claude_desktop_config.json",
+      "config": {
+        "mcpServers": {
+          "finlab": {
+            "command": "uv",
+            "args": [
+              "run",
+              "--directory",
+              "/Users/yourusername/path/to/finlab-claude-plugin/mcp-server",
+              "python",
+              "-m",
+              "finlab_mcp.server"
+            ],
+            "env": {
+              "FINLAB_API_TOKEN": "your_token_here"
+            }
+          }
+        }
+      },
+      "notes": [
+        "使用 uv 執行（推薦）",
+        "將 --directory 路徑改成你的實際專案路徑",
+        "確保 FINLAB_API_TOKEN 已設置",
+        "完全退出並重新開啟 Claude Desktop"
+      ]
+    },
+    "legacy_python": {
+      "description": "傳統 Python 方式（不推薦，僅供參考）",
+      "config": {
+        "mcpServers": {
+          "finlab": {
+            "command": "python3",
+            "args": [
+              "-m",
+              "finlab_mcp.server"
+            ],
+            "cwd": "/Users/yourusername/path/to/finlab-claude-plugin/mcp-server",
+            "env": {
+              "FINLAB_API_TOKEN": "your_token_here"
+            }
+          }
+        }
+      },
+      "notes": [
+        "需要先用 pip 安裝依賴",
+        "不推薦使用，建議改用 uv"
+      ]
+    }
+  },
+  "installation": {
+    "install_uv": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "sync_dependencies": "cd mcp-server && uv sync",
+    "test_server": "cd mcp-server && uv run python test_server.py"
+  },
+  "troubleshooting": {
+    "check_uv": "執行 'uv --version'",
+    "test_connection": "執行 'uv run python test_server.py'",
+    "check_logs": "查看 MCP client 的日誌輸出",
+    "verify_token": "執行 'echo $FINLAB_API_TOKEN'",
+    "reinstall": "執行 'cd mcp-server && uv sync --reinstall'"
+  }
+}
