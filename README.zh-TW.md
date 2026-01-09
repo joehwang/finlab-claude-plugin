@@ -92,6 +92,39 @@ skill-porter convert ./finlab-plugin/skills/finlab --to gemini --output ./finlab
 
 然後依照 Gemini CLI 文件安裝 `finlab-gemini-extension`。
 
+### 方式四 Install the MCP Plugin for Cursor
+
+1. Ensure [uv](https://astral.sh/uv/) is installed.
+2. Navigate to the `mcp-server` directory and install dependencies:
+   ```bash
+   cd mcp-server && uv sync
+   ```
+   
+3. Add and modify the following configuration in `~/.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    ...Other setting,
+    "finlab": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "<YOUR PATH>/finlab-claude-plugin/mcp-server",
+        "python",
+        "-m",
+        "finlab_mcp.server"
+      ],
+      "env": {
+        "FINLAB_API_TOKEN": "<FINLAB API KEY>"
+      }
+    }
+  }
+}
+
+```
+
+
 ## 前置需求
 
 取得 FinLab API Token：https://ai.finlab.tw/api_token/

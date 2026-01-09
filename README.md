@@ -93,7 +93,7 @@ skill-porter convert ./finlab-plugin/skills/finlab --to gemini --output ./finlab
 Then install the generated `finlab-gemini-extension` following Gemini CLI docs.
 
 
-### Option 3: Install the MCP Plugin for Cursor
+### Option 4: Install the MCP Plugin for Cursor
 
 1. Ensure [uv](https://astral.sh/uv/) is installed.
 2. Navigate to the `mcp-server` directory and install dependencies:
